@@ -1,6 +1,6 @@
-* {
+/** {
 	outline: 1px solid red;
-}
+}*/
 
 body > * {
 	max-width: 480px;
@@ -22,17 +22,19 @@ footer {
 }
 
 .ticker {
-	width: 94px;
-	height: 94px;
-	border-radius: 10px;
+	width: 92px;
+	height: 92px;
+	border-radius: 1px;
 	display: inline-block;
 	padding: 1px;
 	float: left;
+	border: 1px solid #001F4C;
+	font-size: 14px;
 }
 
 .ticker > div {
-	padding-left: 3px;
-	padding-right: 3px;
+	padding-left: 1px;
+	padding-right: 1px;
 }
 
 .positive {
@@ -62,11 +64,7 @@ footer {
 	text-align: center;
 	margin: 0 auto;
 	font-size: 25px;
-	padding-top: 10px;
-}
-
-.company {
-	font-size: 14px;
+	padding: 16px 0;
 }
 
 .percent {

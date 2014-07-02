@@ -1,0 +1,84 @@
+* {
+	outline: 1px solid red;
+}
+
+body > * {
+	max-width: 480px;
+	height: 100%;
+	background-color: #001F4C;
+	color: #CCD2DB;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Times New Roman';
+}
+
+header {
+	font-size: 50px;
+}
+
+footer {
+	clear: both;
+	font-size: 20px;
+}
+
+.ticker {
+	width: 94px;
+	height: 94px;
+	border-radius: 10px;
+	display: inline-block;
+	padding: 1px;
+	float: left;
+}
+
+.ticker > div {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.positive {
+	background-color: green;
+}
+
+.negative {
+	background-color: red;
+}
+
+.rank {
+	float: left;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+
+.price {
+	float: right;
+	position: relative;
+	top: 0px;
+	right: 0px;
+}
+
+.name {
+	clear: both;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 25px;
+	padding-top: 10px;
+}
+
+.company {
+	font-size: 14px;
+}
+
+.percent {
+	float: left;
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+}
+
+.dollar {
+	float: right;
+	position: relative;
+	bottom: 0px;
+	right: 0px;
+}

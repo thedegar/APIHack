@@ -50,6 +50,7 @@ footer {
 	position: relative;
 	top: 0px;
 	left: 0px;
+	display: none;
 }
 
 .price {
@@ -57,21 +58,22 @@ footer {
 	position: relative;
 	top: 0px;
 	right: 0px;
+	display: none;
 }
 
-.name {
+.name, .percent{
 	clear: both;
 	text-align: center;
 	margin: 0 auto;
+}
+
+.name {
+	padding: 15px 0 0 0;
 	font-size: 25px;
-	padding: 17px 0;
 }
 
 .percent {
-	float: left;
-	position: relative;
-	bottom: 0px;
-	left: 0px;
+	font-size: 20px;
 }
 
 .dollar {
@@ -79,4 +81,5 @@ footer {
 	position: relative;
 	bottom: 0px;
 	right: 0px;
+	display: none;
 }

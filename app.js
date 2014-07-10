@@ -6,6 +6,9 @@
 //---------------------------------*/
 
 $(document).ready(function() {
+	//clear out any old data
+	stockData = [];
+	//request a quote for each DOW company
 	for (var i = 0;i<dow.length;i++) {
 		quotes(dow[i]);
 	}
@@ -29,11 +32,27 @@ var quotes = function(ticker) {
 		type: "GET",
 		})
 	.done(function(quote){
-		//need code here to handle each quote, extract ticker, price, etc
+		storeData(quote);
+		//need code to order by % gain
 
-		console.log(quote[0].t, quote[0].l, quote[0].cp);
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(error);
 	});
+};
+
+//Initiate main variable where the data will be stored
+var stockData = [];
+
+function Stock(ticker, exchange, price, change, changePercent) {
+	this.ticker = ticker;
+	this.exchange = exchange;
+	this.price = price;
+	this.change = change;
+	this.changePercent = changePercent;
+};
+
+var storeData = function(quote) {
+	stockData.push(new Stock(quote[0].t, quote[0].e, quote[0].l, quote[0].c, quote[0].cp));
+	console.log(stockData);
 };

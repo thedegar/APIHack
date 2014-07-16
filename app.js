@@ -12,6 +12,16 @@ $(document).ready(function() {
 	for (var i = 0;i<dow.length;i++) {
 		quotes(dow[i]);
 	}
+	//Can't figure out why the below does not function
+	// while (count != 30) {
+	// 	setTimeout(console.log("waiting"),1000);
+	// }
+	// console.log("done");
+	$(".loading").show(6000, function() {
+		findGains();
+		reorderStocks();
+		updateDOM();
+	});
 });
 
 $(document).on("click","#header",function() {
@@ -20,6 +30,7 @@ $(document).on("click","#header",function() {
 	}
 	findGains();
 	reorderStocks();
+	updateDOM();
 });
 
 //Ticker symbols for eadh Dow company
@@ -34,6 +45,7 @@ var dow = [
 var stockData = [];
 var gains = [];
 var finalStocks = [];
+var count = 0;
 
 //AJAX call to get real time information on a stock ticker
 var quotes = function(ticker) {
@@ -46,6 +58,7 @@ var quotes = function(ticker) {
 		})
 	.done(function(quote){
 		storeData(quote);
+		count++;
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(error);
@@ -116,4 +129,27 @@ var reorderStocks = function() {
 	}
 };
 
+//Function to take the final stock data and update the DOM with those values
+var updateDOM = function() {
+	for (i=0;i<stockData.length;i++) {
+		//remove the first stock
+		$("main").find(".ticker").first().remove();
+		//clone the template
+		var result = $("body").find(".template").clone();
+		//update this new element's text values
+		result.find(".rank").text("#" + (i+1));
+		result.find(".price").text(finalStocks[i].price);
+		result.find(".name").text(finalStocks[i].ticker);
+		result.find(".percent").text(finalStocks[i].changePercent + "%");
+		result.find(".dollar").text(finalStocks[i].change);
+		//update classes appropriately
+		if (finalStocks[i].changePercent < 0) {
+			result.removeClass("positive").addClass("negative");
+		}
+		result.removeClass("template").appendTo("main");
+	}
+	//Can't get timestamp to look right
+	//var now = $.getMonth() + "-" + $.getDate() + "-" + $.getYear() + " " + $.getHours() + ":" + $.getMinutes();
+	$(".loading").text("DOW Heat Map Ready");
+};
 

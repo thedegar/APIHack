@@ -16,6 +16,11 @@ header {
 	font-size: 50px;
 }
 
+.loading {
+	font-size: 12px;
+	display: none;
+}
+
 footer {
 	clear: both;
 	font-size: 20px;
@@ -81,5 +86,9 @@ footer {
 	position: relative;
 	bottom: 0px;
 	right: 0px;
+	display: none;
+}
+
+.template {
 	display: none;
 }

@@ -25,12 +25,17 @@ $(document).ready(function() {
 });
 
 $(document).on("click","#header",function() {
-	if (stockData.length < 30) {
-		alert("Please wait.  The qoutes are not complete yet.");
+	//clear out any old data
+	stockData = [];
+	//request a quote for each DOW company
+	for (var i = 0;i<dow.length;i++) {
+		quotes(dow[i]);
 	}
-	findGains();
-	reorderStocks();
-	updateDOM();
+	$(".loading").hide().text("Data loading...").show(6000, function() {
+		findGains();
+		reorderStocks();
+		updateDOM();
+	});
 });
 
 //Ticker symbols for eadh Dow company
@@ -150,6 +155,6 @@ var updateDOM = function() {
 	}
 	//Can't get timestamp to look right
 	//var now = $.getMonth() + "-" + $.getDate() + "-" + $.getYear() + " " + $.getHours() + ":" + $.getMinutes();
-	$(".loading").text("DOW Heat Map Ready");
+	$(".loading").text("DOW Heat Map Ready...Click to refresh");
 };
 

@@ -27,8 +27,8 @@ $(document).ready(function() {
 $(document).on("click","#header",function() {
 	//clear out any old data
 	stockData = [];
-	var gains = [];
-	var finalStocks = [];
+	gains = [];
+	finalStocks = [];
 	//request a quote for each DOW company
 	for (var i = 0;i<dow.length;i++) {
 		quotes(dow[i]);
